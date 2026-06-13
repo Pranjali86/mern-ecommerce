@@ -95,7 +95,7 @@ function CartPage() {
                 <Link to={`/product/${item._id}`} style={{ color: '#333', textDecoration: 'none', fontWeight: 'bold' }}>
                   {item.name}
                 </Link>
-                <span style={{ color: '#e94560', fontWeight: 'bold' }}>${item.price}</span>
+                <span style={{ color: '#e94560', fontWeight: 'bold' }}>₹{item.price.toLocaleString('en-IN')}</span>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                   <select
                     value={item.qty}
@@ -142,7 +142,7 @@ function CartPage() {
               Items: {cartItems.reduce((acc, item) => acc + item.qty, 0)}
             </p>
             <p style={{ fontSize: '22px', fontWeight: 'bold', color: '#e94560', marginBottom: '20px' }}>
-              Total: ${cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)}
+              Total: ₹{cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toLocaleString('en-IN')}
             </p>
             <button
               onClick={checkoutHandler}

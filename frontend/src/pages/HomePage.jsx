@@ -56,7 +56,7 @@ function HomePage() {
               <span style={{ color: '#666', fontSize: '14px' }}>({product.numReviews})</span>
             </div>
             <p style={{ color: '#e94560', fontWeight: 'bold', fontSize: '20px' }}>
-              ${product.price}
+              ₹{product.price.toLocaleString('en-IN')}
             </p>
             <Link
               to={`/product/${product._id}`}

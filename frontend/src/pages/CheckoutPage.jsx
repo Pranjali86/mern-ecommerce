@@ -58,12 +58,12 @@ function CheckoutPage() {
           totalPrice,
         },
         {
-          headers: { Authorization: `Bearer ${userInfo.token}` },
+          headers: { Authorization: `Bearer ₹.toLocaleString('en-IN'){userInfo.token}` },
         }
       )
       // clear cart after order placed
       localStorage.removeItem('cartItems')
-      navigate(`/order/${data._id}`)
+      navigate(`/order/₹.toLocaleString('en-IN'){data._id}`)
     } catch (err) {
       setError(err.response?.data?.message || 'Something went wrong')
       setLoading(false)
@@ -155,28 +155,28 @@ function CheckoutPage() {
             {cartItems.map((item) => (
               <div key={item._id} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px', paddingBottom: '10px', borderBottom: '1px solid #eee' }}>
                 <span>{item.name} x {item.qty}</span>
-                <span>${(item.price * item.qty).toFixed(2)}</span>
+                <span>₹{(item.price * item.qty).toLocaleString('en-IN')}</span>
               </div>
             ))}
 
             {/* Price breakdown */}
             <div style={{ display: 'flex', justifyContent: 'space-between', margin: '10px 0' }}>
               <span>Items:</span>
-              <span>${itemsPrice.toFixed(2)}</span>
+              <span>₹{itemsPrice.toLocaleString('en-IN')}</span>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', margin: '10px 0' }}>
               <span>Shipping:</span>
               <span style={{ color: shippingPrice === 0 ? 'green' : 'inherit' }}>
-                {shippingPrice === 0 ? 'FREE' : `$${shippingPrice}`}
+                {shippingPrice === 0 ? 'FREE' : `₹${shippingPrice.toLocaleString('en-IN')}`}
               </span>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', margin: '10px 0' }}>
               <span>Tax (18%):</span>
-              <span>${taxPrice}</span>
+              <span>₹{taxPrice.toLocaleString('en-IN')}</span>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', margin: '15px 0', paddingTop: '10px', borderTop: '2px solid #333', fontWeight: 'bold', fontSize: '18px' }}>
               <span>Total:</span>
-              <span style={{ color: '#e94560' }}>${totalPrice.toFixed(2)}</span>
+              <span style={{ color: '#e94560' }}>₹{totalPrice.toLocaleString('en-IN')}</span>
             </div>
 
             <button

@@ -50,7 +50,7 @@ function ProductPage() {
           <p style={{ color: '#666', marginBottom: '10px' }}>Brand: {product.brand}</p>
           <p style={{ color: '#666', marginBottom: '10px' }}>Category: {product.category}</p>
           <p style={{ color: '#e94560', fontSize: '28px', fontWeight: 'bold', marginBottom: '10px' }}>
-            ${product.price}
+            ₹{product.price.toLocaleString('en-IN')}
           </p>
           <p style={{ marginBottom: '20px', lineHeight: '1.6' }}>{product.description}</p>
 
